@@ -8,7 +8,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 
 export default function Browse() {
 
-   const [cards, setCards, favoriteCard] = useState([])
+   const [cards, setCards, favoriteCard] = useState([{}])
    const navigation = useNavigation()
 
     useFocusEffect(
@@ -79,7 +79,7 @@ export default function Browse() {
         </View>
       );
     
-      const renderItem = (item, info) => (
+      const renderItem = (card, info) => (
         <Card
           style={styles.cards}
           status='basic'
@@ -89,7 +89,7 @@ export default function Browse() {
         >
           <Text category = 'h5' >
          
-            {item.text}
+            {card.text}
           </Text>
         </Card>
       );

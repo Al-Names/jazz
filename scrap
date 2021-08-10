@@ -1,0 +1,10 @@
+  retrieveData = () => {
+    AsyncStorage.getItem('user')
+      .then((value) => {
+        const user = JSON.parse(value);
+        Alert.alert(`${user.name} ${user.gender} ${user.age}`);
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  };

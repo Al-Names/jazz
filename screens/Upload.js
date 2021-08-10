@@ -14,21 +14,23 @@ export default function Upload() {
    const [card, setCard] = useState([{
       // id: uuid.v3(), 
       text:"",
-      favorite: false
+      favorite: Boolean('')
     }]);
-    const [newCard ] = useState([]);
+    const [newCard ] = useState([{}]);
 
    const navigation = useNavigation()
 
     const saveCard = async () => {
     
-        const value = await AsyncStorage.getItem("CARDS")
+        // const value = await AsyncStorage.getItem("CARDS")
 	    	// const n = value ? JSON.parse(value) : []
         let n = []
         // n = value ? JSON.parse(value) : []
-	    	n.push(newCard)
-		    await AsyncStorage.setItem("CARDS", JSON.stringify(...n, card)).then(() => navigation.navigate("Browse"))
-  		  setCard({})
+	    	n.push(card)
+		    await AsyncStorage.setItem("CARDS", JSON.stringify(n)).then(() => navigation.navigate("Browse"))
+  		  setCard({
+          
+        })
         console.log(card)
     }
 
@@ -42,7 +44,11 @@ export default function Upload() {
       >
         <TextInput
           value={card.text}
-          onChangeText={setCard}
+          // onChangeText={setCard}
+          onChangeText={(inputText) => setCard({
+            text: inputText,
+            favorite: false
+           })}
           style= {styles.textInput}
           multiline={true}
           autoFocus
