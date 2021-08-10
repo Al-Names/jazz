@@ -1,0 +1,59 @@
+Arguments: 
+  /usr/local/bin/node /usr/local/Cellar/yarn/1.12.3/libexec/bin/yarn.js add @eva-design/eva @react-native-commnunity/async-storage @react-navigation/bottom-tabs @react-navigation/native @ui-kitten/components react-native-screens
+
+PATH: 
+  /Library/Frameworks/Python.framework/Versions/3.7/bin:/Users/mustaphasaeed/.rvm/gems/ruby-2.5.3/bin:/Users/mustaphasaeed/.rvm/gems/ruby-2.5.3@global/bin:/Users/mustaphasaeed/.rvm/rubies/ruby-2.5.3/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/Library/Frameworks/Python.framework/Versions/3.6/bin:/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/share/dotnet:/Library/Frameworks/Mono.framework/Versions/Current/Commands:/usr/local/mysql/bin/:/Applications/Genymotion.app/Contents/MacOS/tools:/usr/local/mongodb/bin:/Users/mustaphasaeed/.rvm/bin:/opt/yarn-[version]/bin:/usr/local/bin
+
+Yarn version: 
+  1.12.3
+
+Node version: 
+  14.17.4
+
+Platform: 
+  darwin x64
+
+Trace: 
+  Error: https://registry.yarnpkg.com/@react-native-commnunity%2fasync-storage: Not found
+      at Request.params.callback [as _callback] (/usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:65894:18)
+      at Request.self.callback (/usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:129018:22)
+      at Request.emit (events.js:400:28)
+      at Request.<anonymous> (/usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:129990:10)
+      at Request.emit (events.js:400:28)
+      at IncomingMessage.<anonymous> (/usr/local/Cellar/yarn/1.12.3/libexec/lib/cli.js:129912:12)
+      at Object.onceWrapper (events.js:519:28)
+      at IncomingMessage.emit (events.js:412:35)
+      at endReadableNT (internal/streams/readable.js:1317:12)
+      at processTicksAndRejections (internal/process/task_queues.js:82:21)
+
+npm manifest: 
+  {
+    "main": "node_modules/expo/AppEntry.js",
+    "scripts": {
+      "start": "expo start",
+      "android": "expo start --android",
+      "ios": "expo start --ios",
+      "web": "expo start --web",
+      "eject": "expo eject"
+    },
+    "dependencies": {
+      "expo": "~42.0.1",
+      "expo-status-bar": "~1.0.4",
+      "react": "16.13.1",
+      "react-dom": "16.13.1",
+      "react-native": "https://github.com/expo/react-native/archive/sdk-42.0.0.tar.gz",
+      "react-native-vector-icons": "^8.1.0",
+      "react-native-web": "^0.17.1",
+      "uuidv4": "^6.2.11"
+    },
+    "devDependencies": {
+      "@babel/core": "^7.9.0"
+    },
+    "private": true
+  }
+
+yarn manifest: 
+  No manifest
+
+Lockfile: 
+  No lockfile
