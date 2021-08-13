@@ -2,7 +2,7 @@ import React from 'react';
 import { StyleSheet, View } from 'react-native';
 import { RecoilRoot } from 'recoil';
 import MessagesScreen from '../components/MessagesScreen';
-import RoomsScreen from '../components/RoomsScreen';
+// import RoomsScreen from '../components/RoomsScreen';
 
 function ChatScreen () {
   return (

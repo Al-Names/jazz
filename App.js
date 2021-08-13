@@ -10,7 +10,7 @@ import Upload from "./screens/Upload"
 import Browse from "./screens/Browse"
 import Favorites from "./screens/Favorites"
 import Chat from "./screens/Chat"
-
+import RooomsScreen from "./screens/RoomsScreen"
 const { Navigator, Screen } = createBottomTabNavigator();
 
 
@@ -30,7 +30,7 @@ const TabNavigator = () => (
     <Screen name='Upload' component={Upload}/>
     <Screen name='Browse' component={Browse}/>
     <Screen name='Favorites' component={Favorites}/>
-    <Screen name='Chat' component={Chat}/>
+    <Screen name='Chat' component={RooomsScreen}/>
   </Navigator>
 );
 

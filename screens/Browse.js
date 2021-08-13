@@ -9,6 +9,7 @@ import { LinearGradient } from 'expo-linear-gradient';
 export default function Browse() {
 
    const [cards, setCards, favoriteCard] = useState([{}])
+   const [card] = useState({})
    const navigation = useNavigation()
 
     useFocusEffect(
@@ -22,9 +23,18 @@ export default function Browse() {
     
     const getCards = () =>  {
         AsyncStorage.getItem("CARDS").then((cards) => {
-            setCards(JSON.parse(cards))
+            setCards(cards)
         })
     }
+  //   const getCards = async  () =>  {
+  //     let n = []
+  //     await AsyncStorage.getItem("CARDS", JSON.parse(n))
+  //     .then((cards) => {
+  //         setCards(cards)
+  //     })
+  // }
+
+
     const addToFavorites = async () => {
         const value = await AsyncStorage.getItem("FAVORITECARDS")
         const n = value ? JSON.parse(value) : []
@@ -58,7 +68,7 @@ export default function Browse() {
         </View>
       );
     
-      const renderItemFooter = (footerProps, cards) => (
+      const renderItemFooter = (footerProps, item) => (
         <View {...footerProps} style = {styles.cardFooter}>
           <Button style={styles.button}
             onPress = { addToFavorites} >
@@ -68,6 +78,8 @@ export default function Browse() {
             // onPress={ () => { navigation.navigate('Browse'); deleteCard; {
             //   singleCard: item
             // }} }    
+            onPress={ () => { console.log(cards)
+               }} 
             // onPress = {() => delnavigation.navigate("Browse", {
             //       singleCard: item
             //     })} 
@@ -79,7 +91,7 @@ export default function Browse() {
         </View>
       );
     
-      const renderItem = (card, info) => (
+      const renderItem = (item, cards, info) => (
         <Card
           style={styles.cards}
           status='basic'
@@ -89,7 +101,7 @@ export default function Browse() {
         >
           <Text category = 'h5' >
          
-            {card.text}
+            {item.info}
           </Text>
         </Card>
       );
