@@ -30,7 +30,7 @@ const TabNavigator = () => (
     <Screen name='Upload' component={Upload}/>
     <Screen name='Browse' component={Browse}/>
     <Screen name='Favorites' component={Favorites}/>
-    {/* <Screen name='Chat' component={Chat}/> */}
+    <Screen name='Chat' component={Chat}/>
   </Navigator>
 );
 

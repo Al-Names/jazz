@@ -14,6 +14,14 @@ export default function Upload() {
    const [card, setCard] = useState([{
       // id: uuid.v3(), 
       text:"",
+      description:"",
+      category: {
+        breathing: Boolean(''),
+        grounding: Boolean(''),
+        reThoughts: Boolean(''),
+        tips: Boolean(''),
+        other: Boolean('')
+      },
       favorite: Boolean('')
     }]);
     const [newCard ] = useState([{}]);
@@ -47,6 +55,13 @@ export default function Upload() {
           // onChangeText={setCard}
           onChangeText={(inputText) => setCard({
             text: inputText,
+            category: {
+              breathing: false,
+              grounding: false,
+              reThoughts: false,
+              tips: false,
+              other: false
+            },
             favorite: false
            })}
           style= {styles.textInput}
