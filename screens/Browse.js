@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { StyleSheet, View, TextInput,KeyboardAvoidingView, Dimensions } from 'react-native';
 import { useFocusEffect, useNavigation } from '@react-navigation/native';
+import Icon from 'react-native-vector-icons/Ionicons';
 import { Button, Text, Card, List } from '@ui-kitten/components';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { LinearGradient } from 'expo-linear-gradient';
@@ -17,23 +18,35 @@ export default function Browse() {
             () => {
                 getCards()
             },
-            [],
+            [{}],
         )
     )
     
-    const getCards = () =>  {
-        AsyncStorage.getItem("CARDS").then((cards) => {
-            setCards(cards)
-        })
-    }
-  //   const getCards = async  () =>  {
-  //     let n = []
-  //     await AsyncStorage.getItem("CARDS", JSON.parse(n))
-  //     .then((cards) => {
-  //         setCards(cards)
-  //     })
-  // }
+    // const getCards = () =>  {
+    //     AsyncStorage.getItem("CARDS").then((cards) => {
+    //         setCards(cards)
+    //     })
+    // }
+    const getCards = async  () =>  {
+      let cards = []
+      try {
+       cards =  await AsyncStorage.getItem("CARDS", JSON.parse(cards))
+       .then(() => {
+                setCards({
+                  
+                })
+            })
+      } catch (error) {
+        
+      }
 
+  console.log(cards.text)
+      // let n = []
+     
+      // .then((cards) => {
+      //     setCards(cards)
+      // })
+  }
 
     const addToFavorites = async () => {
         const value = await AsyncStorage.getItem("FAVORITECARDS")
@@ -60,21 +73,22 @@ export default function Browse() {
     
   
     const renderItemHeader = (headerProps, item, id) => (
-        <View {...headerProps}>
-          <Text category='h6'>
-            {/* {item.id}  */}
-            Icons header
-          </Text>
+        <View {...headerProps} style = {styles.cardHeader}>
+         <Icon size={40} color="#bcc7cc" name="ios-warning-outline" />
+
+        
+         <Icon size={40} color="#bcc7cc" name="information" />
+          
         </View>
       );
     
       const renderItemFooter = (footerProps, item) => (
         <View {...footerProps} style = {styles.cardFooter}>
-          <Button style={styles.button}
-            onPress = { addToFavorites} >
-            Favorite
-          </Button>
-          <Button  
+          <Icon color="#597d8f" name="heart-circle" size={60}style={styles.button}
+            onPress = { addToFavorites} />
+          
+       
+          {/* <Button  
             // onPress={ () => { navigation.navigate('Browse'); deleteCard; {
             //   singleCard: item
             // }} }    
@@ -87,7 +101,7 @@ export default function Browse() {
             style={styles.button} 
           >
              Delete
-          </Button>
+          </Button> */}
         </View>
       );
     
@@ -98,11 +112,12 @@ export default function Browse() {
           header={headerProps => renderItemHeader(headerProps, info)}
           footer={renderItemFooter}
       
-        >
+        ><View style={styles.cardText}>
           <Text category = 'h5' >
          
-            {item.info}
+            {item.text}
           </Text>
+          </View>
         </Card>
       );
   return (
@@ -157,23 +172,37 @@ const styles = StyleSheet.create({
 		marginTop: 50
 	},
   cards: {
-		fontSize: 24,
-    flex: 1,
-    padding: 20,
+    flexDirection: 'column',
+
     paddingTop: 15,
-    color: "#597d8f", 
+   
     backgroundColor: '#ddedf5',
     marginVertical: 20,
     borderColor: '#4095c7',
-    borderWidth: 4,
-    borderRadius: 20,
-    justifyContent: 'center',
-    alignItems: 'center'
+    borderWidth: 8,
+    borderRadius:25,
+   
+ 
+    height: 450
 	},
-  cardFooter: {
+  cardText:{
+    flex: 2,
+    fontSize: 24,
+    padding: 20,
+    color: "#597d8f", 
+  },
+  cardHeader: {
+    flex: 1,
     flexDirection: 'row',
     justifyContent: 'space-between',
-    alignItems: 'center'
+   
+  },
+
+  cardFooter: {
+    flex: 1,
+    flexDirection: 'row',
+ 
+    alignItems:  'baseline'
 
   }
 
